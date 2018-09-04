@@ -16,6 +16,7 @@ LABEL summary="$SUMMARY" \
 
 USER 0
 
+RUN ln -sf /opt/app-root/bin/python3 /usr/bin/python3
 RUN pip install pipenv coala-bears pylint
 
 USER 1001
