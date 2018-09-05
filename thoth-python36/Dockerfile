@@ -5,8 +5,8 @@ ENV PYTHON_VERSION="3.6" \
     DESCRIPTION="Thoth's toolchain for testing Python $PYTHON_VERSION applications." \
     LANG="en_US.UTF-8" \
     USERID=1042 \
-    HOME="/opt/app-root/src" \
-    PATH="/opt/app-root/src/bin:/opt/app-root/bin:$PATH"    
+    HOME=/opt/app-root/ \
+    PATH="/opt/app-root/bin:$PATH"    
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
@@ -16,7 +16,7 @@ LABEL summary="$SUMMARY" \
       io.openshift.tags="python,python36" \
       name="thoth-station/python-36" \
       version="0.2.0" \
-      release="1" \
+      release="2" \
       usage="This is not a S2I builder image!" \
       maintainer="Christoph Görn <goern@redhat.com>"
 
