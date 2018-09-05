@@ -2,10 +2,32 @@
 
 ## Python 3.6 Toolchain
 
+This container image could be used by a human, or some CI like Jenkins or Zuul to run linters, and provers...
+
 ```shell
 cd thoth-python-36-centos7
-sudo buildah build-using-dockerfile --tag thoth-python-36-centos7 .
-gopass show aicoe/thoth/quay.io/robot-users
-sudo skopeo copy containers-storage:ba678799b9c51858d39cf3fea246d73c77416d2ca353955d04d7a1dacd8846a3 docker://quay.io/aicoe/thoth-python-36-centos7:v0.1.0 --dest-creds aicoe+ptah:<password>
+buildah build-using-dockerfile --tag thoth-python-36-centos7:latest .
+gopass show aicoe/thoth/quay.io/robot-users # get the credentials
+sudo skopeo copy containers-storage:localhost/thoth-python-36-centos7:latest docker://quay.io/aicoe/thoth-python-36-centos7:v0.1.4 --dest-creds aicoe+ptah:<password>
 
 ```
+
+### Test
+
+Looking at the installed packages, as of v0.1.3 you should see:
+
+```shell
+$ podman run -ti --rm thoth-python-36-centos7:latest pip --version
+pip 9.0.3 from /usr/lib/python3.6/site-packages (python 3.6)
+$ podman run -ti --rm thoth-python-36-centos7:latest pipenv --version
+pipenv, version 2018.7.1
+$ podman run -ti --rm thoth-python-36-centos7:latest coala --version 
+0.11.0
+$ podman run -ti --rm thoth-python-36-centos7:latest pylint --version
+No config file found, using default configuration
+pylint 1.9.3
+```
+
+### Thoth usage
+
+[Thoth's Zuul](https://zuul.thoth-station.ninja/zuul/t/local/status.html) is using this container image with the [linter job]().
