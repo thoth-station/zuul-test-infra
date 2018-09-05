@@ -13,7 +13,7 @@ LABEL summary="$SUMMARY" \
       io.openshift.tags="python,python36" \
       name="thoth-station/python-36" \
       version="0.1.4" \
-      release="1" \
+      release="2" \
       usage="This is not a S2I builder image!" \
       maintainer="Christoph Görn <goern@redhat.com>"
 
@@ -29,7 +29,7 @@ RUN pushd /tmp/src/thoth-python-36-centos7 && \
     mkdir -p /opt/app-root && \
     chmod 777 /opt/app-root && \
     chown 1042 /opt/app-root && \
-    rm -rf /tmp/src/thoth-python-36-centos7
+    rm -rf /tmp/src
 
 USER 1042
 
