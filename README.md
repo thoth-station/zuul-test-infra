@@ -6,15 +6,15 @@ This container image could be used by a human, or some CI like Jenkins or Zuul t
 
 ```shell
 cd thoth-python-36-centos7
-buildah build-using-dockerfile --tag thoth-python-36-centos7:latest .
+buildah build-using-dockerfile --tag thoth-python-36:latest .
 gopass show aicoe/thoth/quay.io/robot-users # get the credentials
-sudo skopeo copy containers-storage:localhost/thoth-python-36-centos7:latest docker://quay.io/aicoe/thoth-python-36-centos7:v0.1.4 --dest-creds aicoe+ptah:<password>
+sudo skopeo copy containers-storage:localhost/thoth-python-36:latest docker://quay.io/aicoe/thoth-python-36:v0.2.0 --dest-creds aicoe+ptah:<password>
 
 ```
 
 ### Test
 
-Looking at the installed packages, as of v0.1.3 you should see:
+Looking at the installed packages, as of v0.2.0 you should see:
 
 ```shell
 $ podman run -ti --rm thoth-python-36-centos7:latest pip --version
