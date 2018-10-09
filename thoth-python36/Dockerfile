@@ -5,7 +5,7 @@ ENV PYTHON_VERSION="3.6" \
     DESCRIPTION="Thoth's toolchain for testing Python $PYTHON_VERSION applications." \
     LANG="en_US.UTF-8" \
     USERID=1042 \
-    HOME=/opt/app-root/ \
+    HOME=/opt/app-root \
     PATH="/opt/app-root/bin:$PATH"    
 
 LABEL summary="$SUMMARY" \
@@ -16,7 +16,7 @@ LABEL summary="$SUMMARY" \
       io.openshift.tags="python,python36" \
       name="thoth-station/python-36" \
       version="0.2.0" \
-      release="2" \
+      release="3" \
       usage="This is not a S2I builder image!" \
       maintainer="Christoph Görn <goern@redhat.com>"
 
@@ -30,9 +30,9 @@ RUN useradd -u ${USERID} -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Applica
     pushd /tmp/src/thoth-python-36-centos7 && \
     pipenv lock -r > requirements.txt && \
     pip3 install -r requirements.txt && \
-    mkdir -p ${HOME}/.pki/nssdb && \
+    mkdir -p ${HOME}/.pki/nssdb ${HOME}/src/ && \
     chown -R ${USERID}:0 ${HOME} && \
-    chmod 777 ${HOME} && \
+    chmod 777 ${HOME}/src/ ${HOME} && \
     rm -rf /tmp/src
 
 USER ${USERID}
