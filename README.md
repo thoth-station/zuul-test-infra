@@ -1,4 +1,4 @@
-# Thoth's Zuul Infrastructure Stuff
+# Thoth's Zuul Infrastructure Stuff - OUTDATED
 
 ## Python 3.6 Toolchain
 

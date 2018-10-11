@@ -15,21 +15,18 @@ LABEL summary="$SUMMARY" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="python,python36" \
       name="thoth-station/python-36" \
-      version="0.2.0" \
-      release="3" \
+      version="0.3.0" \
+      release="0" \
       usage="This is not a S2I builder image!" \
       maintainer="Christoph Görn <goern@redhat.com>"
 
 RUN dnf update -y --setopt=tsflags=nodocs && \
-    dnf install -y --setopt=tsflags=nodocs which python3-pip git && \
-    dnf clean all && \
-    pip3 install pipenv
+    dnf install -y --setopt=tsflags=nodocs which python3-pip git pipenv && \
+    dnf clean all
 
-COPY ./ /tmp/src/thoth-python-36-centos7
+COPY ./ /tmp/src/thoth-python-36
 RUN useradd -u ${USERID} -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Application User" default && \
-    pushd /tmp/src/thoth-python-36-centos7 && \
-    pipenv lock -r > requirements.txt && \
-    pip3 install -r requirements.txt && \
+    pushd /tmp/src/thoth-python-36 && \
     mkdir -p ${HOME}/.pki/nssdb ${HOME}/src/ && \
     chown -R ${USERID}:0 ${HOME} && \
     chmod 777 ${HOME}/src/ ${HOME} && \
