@@ -42,6 +42,7 @@ objects:
     metadata:
       labels:
         app: "zuul"
+        component: "infrastructure"
       name: "thoth-python36"
     spec:
       resources:
@@ -75,6 +76,7 @@ objects:
     metadata:
       labels:
         app: "zuul"
+        component: "infrastructure"
       name: "thoth-coala"
     spec:
       resources:
@@ -105,11 +107,12 @@ objects:
       - type: ImageChange
         imageChange: {}
 
-  - apiVersion: v1
-    kind: BuildConfig
+  - kind: BuildConfig
+    apiVersion: v1
     metadata:
       labels:
         app: "zuul"
+        component: "infrastructure"
       name: "thoth-pylint"
     spec:
       resources:
