@@ -21,12 +21,16 @@ objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
+      annotations:
+        openshift.io/display-name: "thoth-python36"
       labels:
-        app: zuul
-        component: infrastructure
-      name: thoth-python36
+        app: "zuul"
+        component: "infrastructure"
+      name: "thoth-python36"
     spec:
-      name: ${IMAGE_STREAM_TAG}
+      name: "${IMAGE_STREAM_TAG}"
+      lookupPolicy:
+        local: true 
 
   - kind: ImageStream
     apiVersion: v1
@@ -37,6 +41,8 @@ objects:
       name: thoth-pylint
     spec:
       name: ${IMAGE_STREAM_TAG}
+      lookupPolicy:
+        local: true 
 
   - kind: ImageStream
     apiVersion: v1
@@ -47,6 +53,8 @@ objects:
       name: thoth-coala
     spec:
       name: ${IMAGE_STREAM_TAG}
+      lookupPolicy:
+        local: true 
 
 parameters:
   - description: Tag of the ImageStreams

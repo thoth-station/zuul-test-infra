@@ -37,8 +37,8 @@ parameters:
     value: 'latest'
 
 objects:
-  - apiVersion: v1
-    kind: BuildConfig
+  - kind: BuildConfig
+    apiVersion: v1
     metadata:
       labels:
         app: "zuul"
@@ -70,8 +70,8 @@ objects:
       - type: ImageChange
         imageChange: {}
 
-  - apiVersion: v1
-    kind: BuildConfig
+  - kind: BuildConfig
+    apiVersion: v1
     metadata:
       labels:
         app: "zuul"
@@ -88,7 +88,6 @@ objects:
         to:
           kind: ImageStreamTag
           name: "thoth-coala:${IMAGE_STREAM_TAG}"
-      runPolicy: Serial
       source:
         type: Git
         git:
@@ -99,14 +98,12 @@ objects:
         type: Docker
         dockerStrategy:
           dockerfilePath: Dockerfile
+          from:
+            kind: "ImageStreamTag"
+            name: "thoth-python36:${IMAGE_STREAM_TAG}"
       triggers:
       - type: ImageChange
         imageChange: {}
-      - type: ImageChange 
-        imageChange:
-          from:
-            kind: ImageStreamTag
-            name: "thoth-python36:latest"
 
   - apiVersion: v1
     kind: BuildConfig
@@ -137,11 +134,9 @@ objects:
         type: Docker
         dockerStrategy:
           dockerfilePath: Dockerfile
+          from:
+            kind: "ImageStreamTag"
+            name: "thoth-python36:${IMAGE_STREAM_TAG}"
       triggers:
       - type: ImageChange
         imageChange: {}
-      - type: ImageChange 
-        imageChange:
-          from:
-            kind: ImageStreamTag
-            name: "thoth-python36:latest"
