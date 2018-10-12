@@ -18,6 +18,9 @@ COPY ./ /tmp/src/thoth-python-36
 RUN pushd /tmp/src/thoth-python-36 && \
     pipenv lock -r > requirements.txt && \
     pip3 install -r requirements.txt && \
+    cp pylintrc /etc/pylintrc && \
+    chmod 644 /etc/pylintrc && \
+    chown 0:0 /etc/pylintrc && \
     rm -rf /tmp/src
 
 USER ${USERID}
