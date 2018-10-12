@@ -1,0 +1,147 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: zuul-infra-buildconfig
+  annotations:
+    description: >
+      These are the BuildConfigs used to build the container images for Zuul to run Pod based Jobs.
+    openshift.io/display-name: 'Thoth Zuul Infrastructure'
+    version: 0.1.0
+    tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
+    template.openshift.io/documentation-url: https://github.com/Thoth-Station/
+    template.openshift.io/long-description: >
+      These are the BuildConfigs used to build the container images for Zuul to run Pod based Jobs.
+    template.openshift.io/provider-display-name: Red Hat, Inc.
+  labels:
+    template: zuul-infra-buildconfig
+    app: zuul
+    component: infrastructure
+
+parameters:
+  - description: Git repository for zuul-infra
+    displayName: Thoth's Zuul Infrastructure git repository
+    required: true
+    name: GITHUB_URL
+    value: 'https://github.com/thoth-station/zuul-infra'
+
+  - description: Git reference to be used within zuul-infra
+    displayName: Thoth's Zuul Infrastructure git reference
+    required: true
+    name: GITHUB_REF
+    value: 'master'
+
+  - description: Tag of the output ImageStream the resulting container image should go to
+    displayName: ImageStream Tag
+    required: true
+    name: IMAGE_STREAM_TAG
+    value: 'latest'
+
+objects:
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      labels:
+        app: "zuul"
+      name: "thoth-python36"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-python36:${IMAGE_STREAM_TAG}"
+      runPolicy: Serial
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-python36"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+      triggers:
+      - type: ImageChange
+        imageChange: {}
+
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      labels:
+        app: "zuul"
+      name: "thoth-coala"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-coala:${IMAGE_STREAM_TAG}"
+      runPolicy: Serial
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-coala"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+      triggers:
+      - type: ImageChange
+        imageChange: {}
+      - type: ImageChange 
+        imageChange:
+          from:
+            kind: ImageStreamTag
+            name: "thoth-python36:latest"
+
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      labels:
+        app: "zuul"
+      name: "thoth-pylint"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-pylint:${IMAGE_STREAM_TAG}"
+      runPolicy: Serial
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-pylint"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+      triggers:
+      - type: ImageChange
+        imageChange: {}
+      - type: ImageChange 
+        imageChange:
+          from:
+            kind: ImageStreamTag
+            name: "thoth-python36:latest"
