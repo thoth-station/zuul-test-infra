@@ -6,7 +6,7 @@ ENV PYTHON_VERSION="3.6" \
     LANG="en_US.UTF-8" \
     USERID=1042 \
     HOME=/opt/app-root \
-    PATH="/opt/app-root/bin:$PATH"    
+    PATH="/opt/app-root/bin:$PATH"
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
@@ -27,9 +27,9 @@ RUN dnf update -y --setopt=tsflags=nodocs && \
 COPY ./ /tmp/src/thoth-python-36
 RUN useradd -u ${USERID} -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Application User" default && \
     pushd /tmp/src/thoth-python-36 && \
-    mkdir -p ${HOME}/.pki/nssdb ${HOME}/src/ && \
+    mkdir -p ${HOME}/.pki/nssdb ${HOME}/src/ ${HOME}/.local/ && \
     chown -R ${USERID}:0 ${HOME} && \
-    chmod 777 ${HOME}/src/ ${HOME} && \
+    chmod 777 ${HOME}/src/ ${HOME} ${HOME}/.local/ && \
     rm -rf /tmp/src
 
 USER ${USERID}
