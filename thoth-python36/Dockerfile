@@ -24,13 +24,10 @@ RUN dnf update -y --setopt=tsflags=nodocs && \
     dnf install -y --setopt=tsflags=nodocs which python3-pip git pipenv && \
     dnf clean all
 
-COPY ./ /tmp/src/thoth-python-36
 RUN useradd -u ${USERID} -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Application User" default && \
-    pushd /tmp/src/thoth-python-36 && \
     mkdir -p ${HOME}/.pki/nssdb ${HOME}/src/ ${HOME}/.local/ && \
     chown -R ${USERID}:0 ${HOME} && \
-    chmod 777 ${HOME}/src/ ${HOME} ${HOME}/.local/ && \
-    rm -rf /tmp/src
+    chmod 777 ${HOME}/src/ ${HOME} ${HOME}/.local/
 
 USER ${USERID}
 
