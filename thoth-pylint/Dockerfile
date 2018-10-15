@@ -18,7 +18,7 @@ USER 0
 RUN pushd /tmp/src/thoth-python-36 && \
     cp pylintrc /etc/pylintrc && \
     chmod 644 /etc/pylintrc && \
-    chown 0:0 /etc/pylintrc && \
+    chown 0:0 /etc/pylintrc
 
 USER ${USERID}
 RUN pushd /tmp/src/thoth-python-36 && \

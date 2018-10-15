@@ -18,5 +18,3 @@ RUN pushd /tmp/src/thoth-python-36 && \
     pipenv lock -r > requirements.txt && \
     pip3 install -r requirements.txt && \
     rm -rf /tmp/src
-
-USER ${USERID}
