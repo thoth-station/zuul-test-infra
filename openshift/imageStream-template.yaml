@@ -6,7 +6,7 @@ metadata:
     description: >
       These are the ImageStream used by Zuul to run Pod based Jobs.
     openshift.io/display-name: 'Thoth Zuul Infrastructure'
-    version: 0.1.0
+    version: 0.3.0
     tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -16,6 +16,13 @@ metadata:
     template: zuul-infra-imagestream
     app: zuul
     component: infrastructure
+
+parameters:
+  - description: Tag of the ImageStreams
+    displayName: ImageStream Tag
+    required: true
+    name: IMAGE_STREAM_TAG
+    value: 'latest'
 
 objects:
   - kind: ImageStream
@@ -38,7 +45,7 @@ objects:
       labels:
         app: zuul
         component: infrastructure
-      name: thoth-pylint
+      name: "thoth-pylint"
     spec:
       name: ${IMAGE_STREAM_TAG}
       lookupPolicy:
@@ -50,15 +57,20 @@ objects:
       labels:
         app: zuul
         component: infrastructure
-      name: thoth-coala
+      name: "thoth-coala"
     spec:
       name: ${IMAGE_STREAM_TAG}
       lookupPolicy:
         local: true 
 
-parameters:
-  - description: Tag of the ImageStreams
-    displayName: ImageStream Tag
-    required: true
-    name: IMAGE_STREAM_TAG
-    value: 'latest'
+  - kind: ImageStream
+    apiVersion: v1
+    metadata:
+      labels:
+        app: zuul
+        component: infrastructure
+      name: "thoth-pytest"
+    spec:
+      name: ${IMAGE_STREAM_TAG}
+      lookupPolicy:
+        local: true 

@@ -6,7 +6,7 @@ metadata:
     description: >
       These are the BuildConfigs used to build the container images for Zuul to run Pod based Jobs.
     openshift.io/display-name: 'Thoth Zuul Infrastructure'
-    version: 0.1.0
+    version: 0.3.0
     tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -133,6 +133,43 @@ objects:
           uri: "${GITHUB_URL}"
           ref: ${GITHUB_REF}
         contextDir: "thoth-pylint"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+          from:
+            kind: "ImageStreamTag"
+            name: "thoth-python36:${IMAGE_STREAM_TAG}"
+      triggers:
+      - type: ImageChange
+        imageChange: {}
+
+  - kind: BuildConfig
+    apiVersion: v1
+    metadata:
+      labels:
+        app: "zuul"
+        component: "infrastructure"
+      name: "thoth-pytest"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-pytest:${IMAGE_STREAM_TAG}"
+      runPolicy: Serial
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-pytest"
       strategy:
         type: Docker
         dockerStrategy:
