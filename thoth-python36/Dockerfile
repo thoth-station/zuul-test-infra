@@ -6,7 +6,7 @@ ENV PYTHON_VERSION="3.6" \
     LANG="en_US.UTF-8" \
     USERID=1042 \
     HOME="/opt/app-root" \
-    PATH="/opt/app-root/bin:$PATH"
+    PATH="/opt/app-root/.local/bin:/opt/app-root/bin:$PATH"
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
@@ -16,10 +16,12 @@ LABEL summary="$SUMMARY" \
       io.openshift.tags="python,python36" \
       name="thoth-station/thoth-python36" \
       vendor="AICoE at the Office of the CTO, Red Hat Inc." \
-      version="0.3.0" \
+      version="0.3.1" \
       release="0" \
       usage="This is not a S2I builder image!" \
       maintainer="Christoph Görn <goern@redhat.com>"
+
+WORKDIR ${HOME}
 
 RUN dnf update -y --setopt=tsflags=nodocs && \
     dnf install -y --setopt=tsflags=nodocs which python3-pip git pipenv && \
@@ -31,5 +33,3 @@ RUN useradd -u ${USERID} -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Applica
     chmod 777 -R ${HOME}/src/ ${HOME} ${HOME}/.local/
 
 USER ${USERID}
-
-WORKDIR ${HOME}
