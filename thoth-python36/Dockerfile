@@ -6,7 +6,11 @@ ENV PYTHON_VERSION="3.6" \
     LANG="en_US.UTF-8" \
     USERID=1042 \
     HOME="/opt/app-root" \
-    PATH="/opt/app-root/.local/bin:/opt/app-root/bin:$PATH"
+    LC_ALL="en_US.UTF-8" \
+    LANG="en_US.UTF-8" \
+    PIP_NO_CACHE_DIR="off" \
+    PATH="/opt/app-root/.local/bin:/opt/app-root/bin:$PATH" \
+    SHELL="/usr/bin/bash"
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
@@ -23,13 +27,16 @@ LABEL summary="$SUMMARY" \
 
 WORKDIR ${HOME}
 
-RUN dnf update -y --setopt=tsflags=nodocs && \
-    dnf install -y --setopt=tsflags=nodocs which python3-pip git pipenv && \
-    dnf clean all
+RUN INSTALL_PKGS="gd-devel openssl-devel zlib-devel libcurl-devel libxml2-devel libxslt-devel \
+    make autoconf automake bzip2 gcc-c++ patch gdb procps-ng unzip wget which git pipenv" && \
+    dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    rpm -V $INSTALL_PKGS && \
+    dnf update -y --setopt=tsflags=nodocs && \
+    dnf clean all -y
 
 RUN useradd -u ${USERID} -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Application User" default && \
-    mkdir -p ${HOME}/.pki/nssdb ${HOME}/src/ ${HOME}/.local/ && \
+    mkdir -p ${HOME}/.pki/nssdb ${HOME}/src/ ${HOME}/.local/ ${HOME}/.cache/ && \
     chown -R ${USERID}:0 ${HOME} && \
-    chmod 777 -R ${HOME}/src/ ${HOME} ${HOME}/.local/
+    chmod 777 -R ${HOME}/src/ ${HOME} ${HOME}/.cache/ ${HOME}/.local/
 
 USER ${USERID}

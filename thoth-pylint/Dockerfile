@@ -1,8 +1,7 @@
 FROM thoth-python36:latest
 
 ENV SUMMARY="Thoth's toolchain for Pylint." \
-    DESCRIPTION="Thoth's toolchain for Pylint." \
-    XDG_CACHE_HOME="/tmp"
+    DESCRIPTION="Thoth's toolchain for Pylint."
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \

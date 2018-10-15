@@ -1,8 +1,7 @@
 FROM thoth-python36:latest
 
 ENV SUMMARY="Thoth's toolchain for Coala linting." \
-    DESCRIPTION="Thoth's toolchain for Coala linting." \
-    XDG_CACHE_HOME="/tmp"
+    DESCRIPTION="Thoth's toolchain for Coala linting."
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \

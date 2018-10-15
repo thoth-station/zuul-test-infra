@@ -1,8 +1,7 @@
 FROM thoth-python36:latest
 
 ENV SUMMARY="Thoth's toolchain for pytest." \
-    DESCRIPTION="Thoth's toolchain for pytest." \
-    XDG_CACHE_HOME="/tmp"
+    DESCRIPTION="Thoth's toolchain for pytest."
 
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
