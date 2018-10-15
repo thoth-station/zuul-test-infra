@@ -13,7 +13,7 @@ LABEL summary="$SUMMARY" \
       version="0.1.0" \
       release="0"
 
-COPY ./ /tmp/src-thoth-pylint
-RUN pushd /tmp/src-thoth-pylint && \
+COPY ./ ${HOME}/src-thoth-pylint
+RUN pushd ${HOME}/src-thoth-pylint && \
     pipenv install && \
-    rm -rf /tmp/src-thoth-pylint
+    rm -rf ${HOME}/src-thoth-pylint
