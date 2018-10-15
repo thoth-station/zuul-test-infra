@@ -14,6 +14,7 @@ LABEL summary="$SUMMARY" \
 USER 0
 COPY ./ /tmp/src-thoth-pytest
 RUN chmod 777 -R /tmp/src-thoth-pytest && \
+    pushd /tmp/src-thoth-pytest && \
     pip3 install --requirement requirements.txt
 
 USER ${USERID}
