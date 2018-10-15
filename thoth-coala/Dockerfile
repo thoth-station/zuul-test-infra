@@ -13,8 +13,6 @@ LABEL summary="$SUMMARY" \
       version="0.1.0" \
       release="0"
 
-USER 0
-
 COPY ./ /tmp/src/thoth-python-36
 RUN pushd /tmp/src/thoth-python-36 && \
     pipenv lock -r > requirements.txt && \

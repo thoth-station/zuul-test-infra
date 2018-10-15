@@ -12,15 +12,16 @@ LABEL summary="$SUMMARY" \
       version="0.1.0" \
       release="0"
 
-USER 0
-
 COPY ./ /tmp/src/thoth-python-36
+
+USER 0
 RUN pushd /tmp/src/thoth-python-36 && \
-    pipenv lock -r > requirements.txt && \
-    pip3 install -r requirements.txt && \
     cp pylintrc /etc/pylintrc && \
     chmod 644 /etc/pylintrc && \
     chown 0:0 /etc/pylintrc && \
-    rm -rf /tmp/src
 
 USER ${USERID}
+RUN pushd /tmp/src/thoth-python-36 && \
+    pipenv lock -r > requirements.txt && \
+    pip3 install -r requirements.txt && \
+    rm -rf /tmp/src
