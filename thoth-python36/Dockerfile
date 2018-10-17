@@ -1,8 +1,8 @@
 FROM registry.fedoraproject.org/fedora:28
 
 ENV PYTHON_VERSION="3.6" \
-    SUMMARY="Thoth's toolchain for testing Python ${PYTHON_VERSION} applications" \
-    DESCRIPTION="Thoth's toolchain for testing Python ${PYTHON_VERSION} applications." \
+    SUMMARY="Thoth's toolchain for Python ${PYTHON_VERSION} applications" \
+    DESCRIPTION="Thoth's toolchain for Python ${PYTHON_VERSION} applications." \
     LANG="en_US.UTF-8" \
     USERID=1042 \
     HOME="/opt/app-root" \
@@ -20,7 +20,7 @@ LABEL summary="$SUMMARY" \
       io.openshift.tags="python,python36" \
       name="thoth-station/thoth-python36" \
       vendor="AICoE at the Office of the CTO, Red Hat Inc." \
-      version="0.3.2" \
+      version="0.3.3" \
       release="0" \
       usage="This is not a S2I builder image!" \
       maintainer="Christoph Görn <goern@redhat.com>"

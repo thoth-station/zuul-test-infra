@@ -1,4 +1,4 @@
-FROM thoth-python36:latest
+FROM quay.io/thoth-station/thoth-python36:latest
 
 ENV SUMMARY="Thoth's toolchain for Coala linting." \
     DESCRIPTION="Thoth's toolchain for Coala linting."
