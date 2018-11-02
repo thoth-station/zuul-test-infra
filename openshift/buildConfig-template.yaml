@@ -199,7 +199,7 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "thoth-os:${IMAGE_STREAM_TAG}"
+          name: "thoth-ops:${IMAGE_STREAM_TAG}"
       runPolicy: Serial
       source:
         type: Git
