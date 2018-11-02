@@ -6,7 +6,7 @@ metadata:
     description: >
       These are the ImageStream used by Zuul to run Pod based Jobs.
     openshift.io/display-name: 'Thoth Zuul Infrastructure'
-    version: 0.5.0
+    version: 0.6.0
     tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -83,7 +83,7 @@ objects:
       labels:
         app: "zuul"
         component: "infrastructure"
-      name: "thoth-openshift-client"
+      name: "thoth-ops"
     spec:
       name: "${IMAGE_STREAM_TAG}"
       lookupPolicy:
