@@ -12,7 +12,7 @@ LABEL summary="$SUMMARY" \
 
 USER 0
 COPY ./ /tmp/src-thoth-coala
-RUN dnf install -y --setopt=tsflags=nodocs origin iputils curl && \
+RUN dnf install -y --setopt=tsflags=nodocs origin iputils curl skopeo && \
     chmod 777 -R /tmp/src-thoth-coala && \
     pushd /tmp/src-thoth-coala && \
     pip3 install --requirement requirements.txt
