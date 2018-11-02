@@ -11,6 +11,10 @@ LABEL summary="$SUMMARY" \
       name="thoth-station/thoth-openshift-client"
 
 USER 0
-RUN dnf install -y --setopt=tsflags=nodocs origin iputils curl
+COPY ./ /tmp/src-thoth-coala
+RUN dnf install -y --setopt=tsflags=nodocs origin iputils curl && \
+    chmod 777 -R /tmp/src-thoth-coala && \
+    pushd /tmp/src-thoth-coala && \
+    pip3 install --requirement requirements.txt
 
 USER ${USERID}
