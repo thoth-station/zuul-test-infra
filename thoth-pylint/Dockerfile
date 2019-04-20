@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/thoth-python36:latest
+FROM quay.io/aicoe/thoth-python36:latest
 
 ENV SUMMARY="Thoth's toolchain for Pylint." \
     DESCRIPTION="Thoth's toolchain for Pylint."
@@ -12,11 +12,14 @@ LABEL summary="$SUMMARY" \
 
 USER 0
 COPY ./ /tmp/src-thoth-pylint
-RUN chmod 777 -R /tmp/src-thoth-pylint && \
+RUN INSTALL_PKGS="gd-devel openssl-devel zlib-devel libcurl-devel libxml2-devel libxslt-devel \
+    make autoconf automake bzip2 gcc-c++ patch gdb procps-ng unzip wget which git pipenv" && \
+    chmod 777 -R /tmp/src-thoth-pylint && \
     pushd /tmp/src-thoth-pylint && \
     cp pylintrc /etc/pylintrc && \
     chmod 644 /etc/pylintrc && \
     chown 0:0 /etc/pylintrc && \
-    pip3 install --requirement requirements.txt
+    pip3 install --requirement requirements.txt && \
+    dnf remove -y $INSTALL_PKGS
 
 USER ${USERID}
