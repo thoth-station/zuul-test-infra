@@ -20,7 +20,7 @@ LABEL summary="$SUMMARY" \
       io.openshift.tags="python,python36" \
       name="thoth-station/thoth-python36" \
       vendor="AICoE at the Office of the CTO, Red Hat Inc." \
-      version="0.5.2" \
+      version="0.6.0" \
       release="0" \
       usage="This is not a S2I builder image!" \
       maintainer="Christoph Görn <goern@redhat.com>"
@@ -28,7 +28,7 @@ LABEL summary="$SUMMARY" \
 WORKDIR ${HOME}
 
 RUN INSTALL_PKGS="gd-devel openssl-devel zlib-devel libcurl-devel libxml2-devel libxslt-devel \
-    make autoconf automake bzip2 gcc-c++ patch gdb procps-ng unzip wget which git python2" && \
+    make autoconf automake bzip2 gcc-c++ patch gdb procps-ng unzip wget which git" && \
     dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     dnf update -y --setopt=tsflags=nodocs && \
