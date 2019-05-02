@@ -28,7 +28,7 @@ LABEL summary="$SUMMARY" \
 WORKDIR ${HOME}
 
 RUN INSTALL_PKGS="gd-devel openssl-devel zlib-devel libcurl-devel libxml2-devel libxslt-devel \
-    make autoconf automake bzip2 gcc-c++ patch gdb procps-ng unzip wget which git" && \
+    make autoconf automake bzip2 gcc-c++ patch gdb procps-ng unzip wget which git python2" && \
     dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     dnf update -y --setopt=tsflags=nodocs && \
