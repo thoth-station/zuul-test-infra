@@ -25,5 +25,9 @@ LABEL summary="$SUMMARY" \
 
 WORKDIR ${HOME}
 
-RUN yum install -y python2 && \
-    pip3 install pipenv
+USER 0
+
+RUN yum install -y python2
+
+USER 1001
+RUN pip3 install pipenv
