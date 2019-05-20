@@ -43,7 +43,7 @@ objects:
       labels:
         app: "zuul"
         component: "infrastructure"
-      name: "thoth-python36"
+      name: "thoth-python36-fedora28"
     spec:
       resources:
         requests:
@@ -55,7 +55,7 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "thoth-python36:${IMAGE_STREAM_TAG}"
+          name: "thoth-python36:fedora28"
       runPolicy: Serial
       source:
         type: Git
@@ -68,8 +68,8 @@ objects:
         dockerStrategy:
           dockerfilePath: Dockerfile
       triggers:
-      - type: ImageChange
-        imageChange: {}
+        - type: ImageChange
+          imageChange: {}
 
   - kind: BuildConfig
     apiVersion: v1
@@ -77,7 +77,7 @@ objects:
       labels:
         app: "zuul"
         component: "infrastructure"
-      name: "thoth-coala"
+      name: "thoth-python36-ubi8"
     spec:
       resources:
         requests:
@@ -89,7 +89,41 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "thoth-coala:${IMAGE_STREAM_TAG}"
+          name: "thoth-python36:ubi8"
+      runPolicy: Serial
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-python36-ubi8"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+
+  - kind: BuildConfig
+    apiVersion: v1
+    metadata:
+      labels:
+        app: "zuul"
+        component: "infrastructure"
+      name: "thoth-coala-fedora28"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-coala:fedora28"
       source:
         type: Git
         git:
@@ -102,10 +136,10 @@ objects:
           dockerfilePath: Dockerfile
           from:
             kind: "ImageStreamTag"
-            name: "thoth-python36:${IMAGE_STREAM_TAG}"
+            name: "thoth-python36:fedora28"
       triggers:
-      - type: ImageChange
-        imageChange: {}
+        - type: ImageChange
+          imageChange: {}
 
   - kind: BuildConfig
     apiVersion: v1
@@ -113,7 +147,7 @@ objects:
       labels:
         app: "zuul"
         component: "infrastructure"
-      name: "thoth-pylint"
+      name: "thoth-coala-ubi8"
     spec:
       resources:
         requests:
@@ -125,7 +159,43 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "thoth-pylint:${IMAGE_STREAM_TAG}"
+          name: "thoth-coala:ubi8"
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-coala-ubi8"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+          from:
+            kind: "ImageStreamTag"
+            name: "thoth-python36:ubi8"
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+
+  - kind: BuildConfig
+    apiVersion: v1
+    metadata:
+      labels:
+        app: "zuul"
+        component: "infrastructure"
+      name: "thoth-pylint-fedora28"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-pylint:fedora28"
       runPolicy: Serial
       source:
         type: Git
@@ -139,10 +209,10 @@ objects:
           dockerfilePath: Dockerfile
           from:
             kind: "ImageStreamTag"
-            name: "thoth-python36:${IMAGE_STREAM_TAG}"
+            name: "thoth-python36:fedora28"
       triggers:
-      - type: ImageChange
-        imageChange: {}
+        - type: ImageChange
+          imageChange: {}
 
   - kind: BuildConfig
     apiVersion: v1
@@ -150,7 +220,7 @@ objects:
       labels:
         app: "zuul"
         component: "infrastructure"
-      name: "thoth-pytest"
+      name: "thoth-pylint-ubi8"
     spec:
       resources:
         requests:
@@ -162,7 +232,45 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "thoth-pytest:${IMAGE_STREAM_TAG}"
+          name: "thoth-pylint:ubi8"
+      runPolicy: Serial
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-pylint-ubi8"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+          from:
+            kind: "ImageStreamTag"
+            name: "thoth-python36:ubi8"
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+
+
+  - kind: BuildConfig
+    apiVersion: v1
+    metadata:
+      labels:
+        app: "zuul"
+        component: "infrastructure"
+      name: "thoth-pytest-fedora28"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-pytest:fedora28"
       runPolicy: Serial
       source:
         type: Git
@@ -176,10 +284,48 @@ objects:
           dockerfilePath: Dockerfile
           from:
             kind: "ImageStreamTag"
-            name: "thoth-python36:${IMAGE_STREAM_TAG}"
+            name: "thoth-python36:fedora28"
       triggers:
-      - type: ImageChange
-        imageChange: {}
+        - type: ImageChange
+          imageChange: {}
+
+  - kind: BuildConfig
+    apiVersion: v1
+    metadata:
+      labels:
+        app: "zuul"
+        component: "infrastructure"
+      name: "thoth-pytest-ubi8"
+    spec:
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: "1"
+        limits:
+          memory: "1Gi"
+          cpu: "1"
+      output:
+        to:
+          kind: ImageStreamTag
+          name: "thoth-pytest:ubi8"
+      runPolicy: Serial
+      source:
+        type: Git
+        git:
+          uri: "${GITHUB_URL}"
+          ref: ${GITHUB_REF}
+        contextDir: "thoth-pytest-ubi8"
+      strategy:
+        type: Docker
+        dockerStrategy:
+          dockerfilePath: Dockerfile
+          from:
+            kind: "ImageStreamTag"
+            name: "thoth-python36:ubi8"
+      triggers:
+        - type: ImageChange
+          imageChange: {}
+
 
   - kind: BuildConfig
     apiVersion: v1

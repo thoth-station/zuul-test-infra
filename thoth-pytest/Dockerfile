@@ -1,4 +1,4 @@
-FROM quay.io/aicoe/thoth-python36:latest
+FROM quay.io/aicoe/thoth-python36:fedora28
 
 ENV SUMMARY="Thoth's toolchain for pytest." \
     DESCRIPTION="Thoth's toolchain for pytest."
@@ -6,9 +6,9 @@ ENV SUMMARY="Thoth's toolchain for pytest." \
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
       io.k8s.description="$DESCRIPTION" \
-      io.k8s.display-name="Thoth Python 3.6 pytest" \
+      io.k8s.display-name="Thoth Python 3.6-fedora28 pytest" \
       io.openshift.tags="python,python36,pytest" \
-      name="thoth-station/thoth-pytest"
+      name="thoth-station/thoth-pytest:fedora28"
 
 USER 0
 COPY ./ /tmp/src-thoth-pytest

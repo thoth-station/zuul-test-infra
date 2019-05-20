@@ -1,4 +1,4 @@
-FROM quay.io/aicoe/thoth-python36:latest
+FROM quay.io/aicoe/thoth-python36:fedora28
 
 ENV SUMMARY="Thoth's toolchain for Pylint." \
     DESCRIPTION="Thoth's toolchain for Pylint."
@@ -6,9 +6,9 @@ ENV SUMMARY="Thoth's toolchain for Pylint." \
 LABEL summary="$SUMMARY" \
       description="$DESCRIPTION" \
       io.k8s.description="$DESCRIPTION" \
-      io.k8s.display-name="Thoth Python 3.6 Pylint" \
+      io.k8s.display-name="Thoth Python 3.6-fedora28 Pylint" \
       io.openshift.tags="python,python36,pylint" \
-      name="thoth-station/thoth-pylint"
+      name="thoth-station/thoth-pylint:fedora28"
 
 USER 0
 COPY ./ /tmp/src-thoth-pylint
