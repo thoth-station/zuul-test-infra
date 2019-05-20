@@ -6,7 +6,7 @@ metadata:
     description: >
       These are the ImageStream used by Zuul to run Pod based Jobs.
     openshift.io/display-name: 'Thoth Zuul Infrastructure'
-    version: 0.6.0
+    version: 0.7.0
     tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -16,13 +16,6 @@ metadata:
     template: zuul-infra-imagestream
     app: zuul
     component: infrastructure
-
-parameters:
-  - description: Tag of the ImageStreams
-    displayName: ImageStream Tag
-    required: true
-    name: IMAGE_STREAM_TAG
-    value: 'latest'
 
 objects:
   - kind: ImageStream
@@ -35,9 +28,15 @@ objects:
         component: "infrastructure"
       name: "thoth-python36"
     spec:
-      name: "${IMAGE_STREAM_TAG}"
       lookupPolicy:
         local: true 
+    tags:
+      - name: "fedora28"
+        referencePolicy:
+          type: Source
+      - name: "ubi8"
+        referencePolicy:
+          type: Source
 
   - kind: ImageStream
     apiVersion: v1
@@ -47,9 +46,15 @@ objects:
         component: infrastructure
       name: "thoth-pylint"
     spec:
-      name: ${IMAGE_STREAM_TAG}
       lookupPolicy:
         local: true 
+    tags:
+      - name: "fedora28"
+        referencePolicy:
+          type: Source
+      - name: "ubi8"
+        referencePolicy:
+          type: Source
 
   - kind: ImageStream
     apiVersion: v1
@@ -59,9 +64,15 @@ objects:
         component: infrastructure
       name: "thoth-coala"
     spec:
-      name: ${IMAGE_STREAM_TAG}
       lookupPolicy:
         local: true 
+    tags:
+      - name: "fedora28"
+        referencePolicy:
+          type: Source
+      - name: "ubi8"
+        referencePolicy:
+          type: Source
 
   - kind: ImageStream
     apiVersion: v1
@@ -71,9 +82,15 @@ objects:
         component: infrastructure
       name: "thoth-pytest"
     spec:
-      name: ${IMAGE_STREAM_TAG}
       lookupPolicy:
-        local: true
+        local: true 
+    tags:
+      - name: "fedora28"
+        referencePolicy:
+          type: Source
+      - name: "ubi8"
+        referencePolicy:
+          type: Source
 
   - kind: ImageStream
     apiVersion: v1
@@ -85,6 +102,9 @@ objects:
         component: "infrastructure"
       name: "thoth-ops"
     spec:
-      name: "${IMAGE_STREAM_TAG}"
       lookupPolicy:
         local: true 
+    tags:
+      - name: "v0.10.1"
+        referencePolicy:
+          type: Source
