@@ -25,4 +25,5 @@ LABEL summary="$SUMMARY" \
 
 WORKDIR ${HOME}
 
-RUN pip3 install pipenv
+RUN yum install -y python2 && \
+    pip3 install pipenv
