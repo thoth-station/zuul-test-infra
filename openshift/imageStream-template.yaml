@@ -105,9 +105,6 @@ objects:
       lookupPolicy:
         local: true 
     tags:
-      - name: "fedora28"
-        referencePolicy:
-          type: Source
-      - name: "ubi8"
+      - name: "v0.10.1"
         referencePolicy:
           type: Source

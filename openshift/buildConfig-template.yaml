@@ -6,7 +6,7 @@ metadata:
     description: >
       These are the BuildConfigs used to build the container images for Zuul to run Pod based Jobs.
     openshift.io/display-name: 'Thoth Zuul Infrastructure'
-    version: 0.6.0
+    version: 0.7.0
     tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -29,12 +29,6 @@ parameters:
     required: true
     name: GITHUB_REF
     value: 'master'
-
-  - description: Tag of the output ImageStream the resulting container image should go to
-    displayName: ImageStream Tag
-    required: true
-    name: IMAGE_STREAM_TAG
-    value: 'latest'
 
 objects:
   - kind: BuildConfig
@@ -345,7 +339,7 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "thoth-ops:${IMAGE_STREAM_TAG}"
+          name: "thoth-ops:v0.10.1"
       runPolicy: Serial
       source:
         type: Git
