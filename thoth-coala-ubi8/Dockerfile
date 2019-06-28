@@ -1,4 +1,4 @@
-FROM quay.io/aicoe/thoth-python36:ubi8
+FROM quay.io/aicoe/thoth-python36:v0.7.0-ubi8
 
 ENV SUMMARY="Thoth's toolchain for Coala linting." \
     DESCRIPTION="Thoth's toolchain for Coala linting."
