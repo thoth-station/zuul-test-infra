@@ -12,6 +12,7 @@ LABEL summary="$SUMMARY" \
 
 USER 0
 COPY ./ /tmp/src-thoth-pytest
-RUN pip3 install --requirement /tmp/src-thoth-pytest/requirements.txt
+RUN yum install -y python2 && \
+    pip3 install --requirement /tmp/src-thoth-pytest/requirements.txt
 
 USER ${USERID}
