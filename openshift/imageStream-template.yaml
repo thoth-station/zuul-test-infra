@@ -105,6 +105,6 @@ objects:
       lookupPolicy:
         local: true 
     tags:
-      - name: "v0.10.1"
+      - name: "v0.12.3"
         referencePolicy:
           type: Source
