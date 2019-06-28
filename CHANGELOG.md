@@ -1,0 +1,11 @@
+# Changelog for Thoth's Python tool chain
+
+## [0.7.0] - 2019-Jun-28 - goern
+
+### Added
+
+This release is basing the Thoth Python tool chain on RHEL UBI8 images and Python 3.6. To run [Coala](https://coala.io/#/home?lang=Python) use something like `podman run --rm -ti -v $(pwd):/opt/app-root/src:Z quay.io/thoth-station/thoth-coala:v0.7.0-ubi8`.
+
+### Changed
+
+With this release we are no longer providing up to date builds based on Fedora. The last version was based on Fedora 28.
