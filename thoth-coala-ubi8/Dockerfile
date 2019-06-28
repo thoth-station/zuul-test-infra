@@ -12,6 +12,10 @@ LABEL summary="$SUMMARY" \
 
 USER 0
 COPY ./ /tmp/src-thoth-coala
+COPY ./root/ /
+
 RUN pip3 install --requirement /tmp/src-thoth-coala/requirements.txt
 
 USER ${USERID}
+
+ENTRYPOINT /usr/bin/thoth-coala
