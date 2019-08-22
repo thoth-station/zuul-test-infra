@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/python-36:1-28
+FROM registry.access.redhat.com/ubi8/python-36:1-37
 
 ENV SUMMARY="Thoth's toolchain for Python ${PYTHON_VERSION} applications" \
     DESCRIPTION="Thoth's toolchain for Python ${PYTHON_VERSION} applications. This toolchain is based on Red Hat UBI8. It includes pipenv." \
@@ -17,9 +17,9 @@ LABEL summary="$SUMMARY" \
       io.k8s.display-name="Thoth Python 3.6-ubi8" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="python,python36" \
-      name="thoth-station/thoth-python36:v0.7.0-ubi8" \
+      name="thoth-station/thoth-python36:v0.8.0-ubi8" \
       vendor="AICoE at the Office of the CTO, Red Hat Inc." \
-      version="0.7.0" \
+      version="0.8.0" \
       release="0" \
       maintainer="Christoph Görn <goern@redhat.com>"
 
