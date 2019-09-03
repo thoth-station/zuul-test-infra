@@ -5,8 +5,8 @@ metadata:
   annotations:
     description: >
       These are the ImageStream used by Zuul to run Pod based Jobs.
-    openshift.io/display-name: 'Thoth Zuul Infrastructure'
-    version: 0.7.0
+    openshift.io/display-name: "Thoth Zuul Infrastructure"
+    version: 0.9.0
     tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -29,12 +29,29 @@ objects:
       name: "thoth-python36"
     spec:
       lookupPolicy:
-        local: true 
+        local: true
     tags:
       - name: "fedora28"
         referencePolicy:
           type: Source
       - name: "ubi8"
+        referencePolicy:
+          type: Source
+
+  - kind: ImageStream
+    apiVersion: v1
+    metadata:
+      annotations:
+        openshift.io/display-name: "s2i-thoth-ubi8-py36"
+      labels:
+        app: "zuul"
+        component: "infrastructure"
+      name: "s2i-thoth-ubi8-py36"
+    spec:
+      lookupPolicy:
+        local: true
+    tags:
+      - name: "v0.1.0"
         referencePolicy:
           type: Source
 
@@ -47,7 +64,7 @@ objects:
       name: "thoth-pylint"
     spec:
       lookupPolicy:
-        local: true 
+        local: true
     tags:
       - name: "fedora28"
         referencePolicy:
@@ -65,7 +82,7 @@ objects:
       name: "thoth-coala"
     spec:
       lookupPolicy:
-        local: true 
+        local: true
     tags:
       - name: "fedora28"
         referencePolicy:
@@ -83,7 +100,7 @@ objects:
       name: "thoth-pytest"
     spec:
       lookupPolicy:
-        local: true 
+        local: true
     tags:
       - name: "fedora28"
         referencePolicy:
@@ -103,7 +120,7 @@ objects:
       name: "thoth-ops"
     spec:
       lookupPolicy:
-        local: true 
+        local: true
     tags:
       - name: "v0.12.3"
         referencePolicy:
