@@ -1,5 +1,17 @@
 # Changelog for Thoth's Python tool chain
 
+## [0.9.6] - 2019-Nov-11 - goern - the Alaaf release
+
+### Changes
+
+The whole toolchain has been rebased on the current RHEL8.1 based UBI8 container image, tagged [1-62](https://access.redhat.com/containers/?architecture=#/registry.access.redhat.com/ubi8/python-36/images/1-62). This updated came in via [Thoth's S2I](https://quay.io/repository/thoth-station/s2i-thoth-ubi8-py36?tab=info).
+
+All tools have been updated to their current version, this does include `black`, `coala`, `mypy`, `pylint` and `pytest`.
+
+Thoth's Zuul infrastructure for the [AICoE](https://github.com/AICoE) and [Thoth-Station](https://github.com/thoth-station) is using these released now!
+
+Please report any issues to https://github.com/thoth-station/zuul-infra/issues
+
 ## [0.9.0] - 2019-Aug-27 - goern
 
 ### Added

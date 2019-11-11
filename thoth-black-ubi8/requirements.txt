@@ -1,6 +1,9 @@
 -i https://pypi.org/simple
 appdirs==1.4.3
-attrs==19.1.0
-black==19.3b0
+attrs==19.3.0
+black==19.10b0
 click==7.0
+pathspec==0.6.0
+regex==2019.11.1
 toml==0.10.0
+typed-ast==1.4.0
