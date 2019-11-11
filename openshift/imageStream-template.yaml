@@ -6,7 +6,7 @@ metadata:
     description: >
       These are the ImageStream used by Zuul to run Pod based Jobs.
     openshift.io/display-name: "Thoth Zuul Infrastructure"
-    version: 0.9.0
+    version: 0.9.4
     tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
@@ -23,6 +23,7 @@ objects:
     metadata:
       annotations:
         openshift.io/display-name: "thoth-python36"
+        thoth-station.ninja/template-version: 0.9.4
       labels:
         app: "zuul"
         component: "infrastructure"
@@ -43,6 +44,7 @@ objects:
     metadata:
       annotations:
         openshift.io/display-name: "s2i-thoth-ubi8-py36"
+        thoth-station.ninja/template-version: 0.9.4
       labels:
         app: "zuul"
         component: "infrastructure"
@@ -51,13 +53,15 @@ objects:
       lookupPolicy:
         local: true
     tags:
-      - name: "v0.1.0"
+      - name: "v0.4.0"
         referencePolicy:
           type: Source
 
   - kind: ImageStream
     apiVersion: v1
     metadata:
+      annotations:
+        thoth-station.ninja/template-version: 0.9.4
       labels:
         app: zuul
         component: infrastructure
@@ -76,6 +80,8 @@ objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
+      annotations:
+        thoth-station.ninja/template-version: 0.9.4
       labels:
         app: zuul
         component: infrastructure
@@ -94,6 +100,8 @@ objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
+      annotations:
+        thoth-station.ninja/template-version: 0.9.4
       labels:
         app: zuul
         component: infrastructure
@@ -113,6 +121,7 @@ objects:
     apiVersion: v1
     metadata:
       annotations:
+        thoth-station.ninja/template-version: 0.9.4
         openshift.io/display-name: "thoth-openshift-client"
       labels:
         app: "zuul"
