@@ -9,13 +9,14 @@ LABEL summary="$SUMMARY" \
       io.k8s.display-name="Thoth Python 3.6-ubi8 Coala" \
       io.openshift.tags="python,python36,coala" \
       name="thoth-station/thoth-coala:ubi8" \
-      version="0.9.4"
+      version="0.9.5"
 
 USER 0
 COPY ./ /tmp/src-thoth-coala
 COPY ./root/ /
 
-RUN pip3 install --requirement /tmp/src-thoth-coala/requirements.txt
+RUN yum install -y python2 && \
+    pip3 install --requirement /tmp/src-thoth-coala/requirements.txt
 
 USER ${USERID}
 
