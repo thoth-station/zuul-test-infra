@@ -16,6 +16,7 @@ COPY ./ /tmp/src-thoth-coala
 COPY ./root/ /
 
 RUN yum install -y python2 && \
+    npm install -g remark-cli && \
     pip3 install --requirement /tmp/src-thoth-coala/requirements.txt
 
 USER ${USERID}
