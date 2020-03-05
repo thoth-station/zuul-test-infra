@@ -1,5 +1,5 @@
 -i https://pypi.org/simple
 mypy-extensions==0.4.3
-mypy==0.740
-typed-ast==1.4.0
+mypy==0.761
+typed-ast==1.4.1
 typing-extensions==3.7.4.1

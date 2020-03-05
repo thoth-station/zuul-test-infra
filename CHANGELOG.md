@@ -1,5 +1,13 @@
 # Changelog for Thoth's Python tool chain
 
+## [0.10.0] - 2020-Mar-05 - goern & harshad
+
+### Changes
+
+Using v0.10.0 of s2i-thoth-ubi8-py36
+
+Installed mark-lint to coala image
+
 ## [0.9.6] - 2019-Nov-11 - goern - the Alaaf release
 
 ### Changes
