@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-f31-py37:v0.10.0
+FROM quay.io/thoth-station/s2i-thoth-f31-py37:v0.11.3
 
 ENV SUMMARY="Thoth's toolchain for pytest." \
     DESCRIPTION="Thoth's toolchain for pytest."
