@@ -13,6 +13,6 @@ LABEL summary="$SUMMARY" \
 
 USER 0
 COPY ./ /tmp/src-thoth-pylint
-RUN pip3 install --requirement /tmp/src-thoth-pylint/requirements.txt
+RUN /usr/bin/pip3 install --requirement /tmp/src-thoth-pylint/requirements.txt
 
 USER ${USERID}
