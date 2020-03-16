@@ -9,7 +9,7 @@ LABEL summary="$SUMMARY" \
       io.k8s.display-name="Thoth Python 3.6-ubi8 mypy" \
       io.openshift.tags="python,python36,mypy" \
       name="thoth-station/thoth-mypy:ubi8" \
-      version="0.10.0"
+      version="0.10.2"
 
 USER 0
 COPY ./ /tmp/src-thoth-mypy
