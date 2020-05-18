@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.11.3
+FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.12.4
 
 ENV SUMMARY="Thoth's toolchain for Coala linting." \
     DESCRIPTION="Thoth's toolchain for Coala linting."
@@ -9,7 +9,7 @@ LABEL summary="$SUMMARY" \
       io.k8s.display-name="Thoth Python 3.6-ubi8 Coala" \
       io.openshift.tags="python,python36,coala" \
       name="thoth-station/thoth-coala:ubi8" \
-      version="0.10.2"
+      version="0.10.3"
 
 USER 0
 COPY ./ /tmp/src-thoth-coala
