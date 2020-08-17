@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.12.4
+FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.15.0
 
 ENV SUMMARY="Thoth's toolchain for Black." \
     DESCRIPTION="Thoth's toolchain for Black."
@@ -12,7 +12,7 @@ LABEL summary="$SUMMARY" \
       version="0.10.3"
 
 USER 0
-COPY ./ /tmp/src-thoth-coala
-RUN pip3 install --requirement /tmp/src-thoth-coala/requirements.txt
+COPY ./ /tmp/src-thoth-black
+RUN pip3 install --requirement /tmp/src-thoth-black/requirements.txt
 
 USER ${USERID}

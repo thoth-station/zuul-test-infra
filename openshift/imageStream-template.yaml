@@ -1,31 +1,27 @@
 apiVersion: v1
 kind: Template
 metadata:
-  name: zuul-infra-imagestream
+  name: thoth-ops-infra-imagestream
   annotations:
     description: >
-      These are the ImageStream used by Zuul to run Pod based Jobs.
-    openshift.io/display-name: "Thoth Zuul Infrastructure"
-    version: 0.9.4
-    tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
+      These are the ImageStream used by thoth-ops to run Pod based Jobs.
+    openshift.io/display-name: "Thoth thoth-ops Infrastructure"
+    tags: thoth,thoth-ops,aicoe-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
-      These are the ImageStream used by Zuul to run Pod based Jobs.
+      These are the ImageStream used by thoth-ops to run Pod based Jobs.
     template.openshift.io/provider-display-name: Red Hat, Inc.
   labels:
-    template: zuul-infra-imagestream
-    app: zuul
+    template: thoth-ops-infra-imagestream
+    app: thoth-ops
     component: infrastructure
 
 objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
-      annotations:
-        openshift.io/display-name: "thoth-python36"
-        thoth-station.ninja/template-version: 0.9.4
       labels:
-        app: "zuul"
+        app: "thoth-ops"
         component: "infrastructure"
       name: "thoth-python36"
     spec:
@@ -42,28 +38,23 @@ objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
-      annotations:
-        openshift.io/display-name: "s2i-thoth-ubi8-py36"
-        thoth-station.ninja/template-version: 0.9.4
       labels:
-        app: "zuul"
+        app: "thoth-ops"
         component: "infrastructure"
       name: "s2i-thoth-ubi8-py36"
     spec:
       lookupPolicy:
         local: true
     tags:
-      - name: "v0.4.0"
+      - name: "v0.15.0"
         referencePolicy:
           type: Source
 
   - kind: ImageStream
     apiVersion: v1
     metadata:
-      annotations:
-        thoth-station.ninja/template-version: 0.9.4
       labels:
-        app: zuul
+        app: thoth-ops
         component: infrastructure
       name: "thoth-pylint"
     spec:
@@ -80,10 +71,8 @@ objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
-      annotations:
-        thoth-station.ninja/template-version: 0.9.4
       labels:
-        app: zuul
+        app: thoth-ops
         component: infrastructure
       name: "thoth-coala"
     spec:
@@ -100,10 +89,8 @@ objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
-      annotations:
-        thoth-station.ninja/template-version: 0.9.4
       labels:
-        app: zuul
+        app: thoth-ops
         component: infrastructure
       name: "thoth-pytest"
     spec:
@@ -120,17 +107,14 @@ objects:
   - kind: ImageStream
     apiVersion: v1
     metadata:
-      annotations:
-        thoth-station.ninja/template-version: 0.9.4
-        openshift.io/display-name: "thoth-openshift-client"
       labels:
-        app: "zuul"
+        app: "thoth-ops"
         component: "infrastructure"
       name: "thoth-ops"
     spec:
       lookupPolicy:
         local: true
     tags:
-      - name: "v0.12.3"
+      - name: "v0.17.0"
         referencePolicy:
           type: Source

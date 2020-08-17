@@ -1,31 +1,30 @@
 apiVersion: v1
 kind: Template
 metadata:
-  name: zuul-infra-buildconfig
+  name: thoth-ops-infra-buildconfig
   annotations:
     description: >
-      These are the BuildConfigs used to build the container images for Zuul to run Pod based Jobs.
-    openshift.io/display-name: "Thoth Zuul Infrastructure"
-    version: 0.9.0
-    tags: thoth,zuul-zuul-ci,ai-stacks,aistacks
+      These are the BuildConfigs used to build the container images for thoth-ops to run Pod based Jobs.
+    openshift.io/display-name: "Thoth thoth-ops Infrastructure"
+    tags: thoth,thoth-ops,aicoe-ci,ai-stacks,aistacks
     template.openshift.io/documentation-url: https://github.com/Thoth-Station/
     template.openshift.io/long-description: >
-      These are the BuildConfigs used to build the container images for Zuul to run Pod based Jobs.
+      These are the BuildConfigs used to build the container images for thoth-ops to run Pod based Jobs.
     template.openshift.io/provider-display-name: Red Hat, Inc.
   labels:
-    template: zuul-infra-buildconfig
-    app: zuul
+    template: thoth-ops-infra-buildconfig
+    app: thoth-ops
     component: infrastructure
 
 parameters:
-  - description: Git repository for zuul-infra
-    displayName: Thoth's Zuul Infrastructure git repository
+  - description: Git repository for thoth-ops-infra
+    displayName: Thoth's thoth-ops Infrastructure git repository
     required: true
     name: GITHUB_URL
-    value: "https://github.com/thoth-station/zuul-infra"
+    value: "https://github.com/thoth-station/thoth-ops-infra"
 
-  - description: Git reference to be used within zuul-infra
-    displayName: Thoth's Zuul Infrastructure git reference
+  - description: Git reference to be used within thoth-ops-infra
+    displayName: Thoth's thoth-ops Infrastructure git reference
     required: true
     name: GITHUB_REF
     value: "master"
@@ -35,7 +34,7 @@ objects:
     apiVersion: v1
     metadata:
       labels:
-        app: "zuul"
+        app: "thoth-ops"
         component: "infrastructure"
       name: "thoth-coala-ubi8"
     spec:
@@ -60,9 +59,6 @@ objects:
         type: Docker
         dockerStrategy:
           dockerfilePath: Dockerfile
-          from:
-            kind: "ImageStreamTag"
-            name: "s2i-thoth-ubi8-py36:v0.1.0"
       triggers:
         - type: ImageChange
           imageChange: {}
@@ -71,7 +67,7 @@ objects:
     apiVersion: v1
     metadata:
       labels:
-        app: "zuul"
+        app: "thoth-ops"
         component: "infrastructure"
       name: "thoth-pylint-ubi8"
     spec:
@@ -97,9 +93,6 @@ objects:
         type: Docker
         dockerStrategy:
           dockerfilePath: Dockerfile
-          from:
-            kind: "ImageStreamTag"
-            name: "s2i-thoth-ubi8-py36:v0.1.0"
       triggers:
         - type: ImageChange
           imageChange: {}
@@ -108,7 +101,7 @@ objects:
     apiVersion: v1
     metadata:
       labels:
-        app: "zuul"
+        app: "thoth-ops"
         component: "infrastructure"
       name: "thoth-pytest-ubi8"
     spec:
@@ -134,9 +127,6 @@ objects:
         type: Docker
         dockerStrategy:
           dockerfilePath: Dockerfile
-          from:
-            kind: "ImageStreamTag"
-            name: "s2i-thoth-ubi8-py36:v0.1.0"
       triggers:
         - type: ImageChange
           imageChange: {}
@@ -145,7 +135,7 @@ objects:
     apiVersion: v1
     metadata:
       labels:
-        app: "zuul"
+        app: "thoth-ops"
         component: "infrastructure"
       name: "thoth-ops"
     spec:
@@ -159,7 +149,7 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "thoth-ops:v0.10.1"
+          name: "thoth-ops:v0.17.0"
       runPolicy: Serial
       source:
         type: Git

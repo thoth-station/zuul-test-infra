@@ -11,11 +11,11 @@ LABEL summary="$SUMMARY" \
       name="thoth-station/thoth-black:fedora28"
 
 USER 0
-COPY ./ /tmp/src-thoth-coala
+COPY ./ /tmp/src-thoth-black
 RUN DEINSTALL_PKGS="gd-devel openssl-devel zlib-devel libcurl-devel libxml2-devel libxslt-devel \
     make autoconf automake bzip2 gcc-c++ patch gdb procps-ng unzip wget" && \
-    chmod 777 -R /tmp/src-thoth-coala && \
-    pushd /tmp/src-thoth-coala && \
+    chmod 777 -R /tmp/src-thoth-black && \
+    pushd /tmp/src-thoth-black && \
     pip3 install --requirement requirements.txt && \
     dnf remove -y $DEINSTALL_PKGS
 
