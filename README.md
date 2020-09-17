@@ -15,16 +15,17 @@ sudo skopeo copy containers-storage:localhost/thoth-python-36:latest docker://qu
 
 ### Thoth Ops Infra Images
 
-Thoth-Ops Images       | Image Link/Status
----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-thoth-precommit-ubi8   | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-precommit/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-precommit)
-thoth-pytest-ubi8      | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pytest/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pytest)
-thoth-pytest-ubi8-py38 | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pytest-ubi8-py38/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pytest-ubi8-py38)
-thoth-pytest-f31-py37  | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pytest-f31-py37/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pytest-f31-py37)
-thoth-mypy-ubi8        | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-mypi/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-mypi)
-thoth-black-ubi8       | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-black/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-black)
-thoth-coala-ubi8       | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-coala/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-coala)
-thoth-pylint-ubi8      | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pylint/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pylint)
+Thoth-Ops Images          | Image Link/Status
+------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+thoth-precommit-ubi8      | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-precommit/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-precommit)
+thoth-precommit-ubi8-py38 | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-precommit/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-precommit-py38)
+thoth-pytest-ubi8         | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pytest/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pytest)
+thoth-pytest-ubi8-py38    | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pytest-ubi8-py38/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pytest-ubi8-py38)
+thoth-pytest-f31-py37     | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pytest-f31-py37/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pytest-f31-py37)
+thoth-mypy-ubi8           | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-mypi/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-mypi)
+thoth-black-ubi8          | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-black/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-black)
+thoth-coala-ubi8          | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-coala/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-coala)
+thoth-pylint-ubi8         | [![Docker Repository on Quay](https://quay.io/repository/thoth-station/thoth-pylint/status "Docker Repository on Quay")](https://quay.io/repository/thoth-station/thoth-pylint)
 
 ### Test
 
