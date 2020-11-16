@@ -9,11 +9,12 @@ LABEL summary="$SUMMARY" \
     io.k8s.display-name="Thoth Python 3.6-ubi8 pytest" \
     io.openshift.tags="python,python36,pytest" \
     name="thoth-station/thoth-pytest:ubi8" \
-    version="0.12.1"
+    version="0.12.2"
 
 USER 0
 COPY ./ /tmp/src-thoth-pytest
 RUN  \
+  pip install --upgrade pip &&\
   /usr/bin/pip3 install --upgrade pip &&\
   /usr/bin/pip3 install --requirement /tmp/src-thoth-pytest/requirements.txt
 

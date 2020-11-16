@@ -9,11 +9,12 @@ LABEL summary="$SUMMARY" \
     io.k8s.display-name="Thoth Python 3.8-ubi8 Pre-Commit" \
     io.openshift.tags="python,python38,pre-commit" \
     name="thoth-station/thoth-pre-commit:ubi8" \
-    version="0.12.1"
+    version="0.12.2"
 
 USER 0
 COPY ./ /tmp/src-thoth-precommit
 RUN  \
+  pip install --upgrade pip &&\
   /usr/bin/pip3 install --upgrade pip &&\
   /usr/bin/pip3 install --requirement /tmp/src-thoth-precommit/requirements.txt
 

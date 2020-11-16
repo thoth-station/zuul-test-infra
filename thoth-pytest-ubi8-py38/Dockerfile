@@ -13,6 +13,7 @@ LABEL summary="$SUMMARY" \
 USER 0
 COPY ./ /tmp/src-thoth-pytest
 RUN  \
+  pip install --upgrade pip &&\
   /usr/bin/pip3 install --upgrade pip &&\
   /usr/bin/pip3 install --requirement /tmp/src-thoth-pytest/requirements.txt
 
