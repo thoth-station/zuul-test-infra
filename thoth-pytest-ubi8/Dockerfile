@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.18.0
+FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.20.1
 
 ENV SUMMARY="Thoth's toolchain for pytest." \
     DESCRIPTION="Thoth's toolchain for pytest."
@@ -9,10 +9,12 @@ LABEL summary="$SUMMARY" \
     io.k8s.display-name="Thoth Python 3.6-ubi8 pytest" \
     io.openshift.tags="python,python36,pytest" \
     name="thoth-station/thoth-pytest:ubi8" \
-    version="0.12.0"
+    version="0.12.1"
 
 USER 0
 COPY ./ /tmp/src-thoth-pytest
-RUN /usr/bin/pip3 install --requirement /tmp/src-thoth-pytest/requirements.txt
+RUN  \
+  /usr/bin/pip3 install --upgrade pip &&\
+  /usr/bin/pip3 install --requirement /tmp/src-thoth-pytest/requirements.txt
 
 USER ${USERID}

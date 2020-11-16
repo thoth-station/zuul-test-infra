@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.15.0
+FROM quay.io/thoth-station/s2i-thoth-ubi8-py36:v0.20.1
 
 ENV SUMMARY="Thoth's toolchain for Pylint." \
     DESCRIPTION="Thoth's toolchain for Pylint."
@@ -9,10 +9,12 @@ LABEL summary="$SUMMARY" \
       io.k8s.display-name="Thoth Python 3.6-ubi8 Pylint" \
       io.openshift.tags="python,python36,pylint" \
       name="thoth-station/thoth-pylint:ubi8" \
-      version="0.11.0"
+      version="0.12.1"
 
 USER 0
 COPY ./ /tmp/src-thoth-pylint
-RUN /usr/bin/pip3 install --requirement /tmp/src-thoth-pylint/requirements.txt
+RUN  \
+  /usr/bin/pip3 install --upgrade pip &&\
+  /usr/bin/pip3 install --requirement /tmp/src-thoth-pylint/requirements.txt
 
 USER ${USERID}
