@@ -15,7 +15,7 @@ USER 0
 COPY ./ /tmp/src-thoth-precommit
 RUN  \
   pip install --upgrade pip &&\
-  /usr/bin/pip3 install --upgrade pip &&\
-  /usr/bin/pip3 install --requirement /tmp/src-thoth-precommit/requirements.txt
+  /usr/bin/python3 -m pip install --upgrade pip &&\
+  /usr/bin/python3 -m pip install --requirement /tmp/src-thoth-precommit/requirements.txt
 
 USER ${USERID}

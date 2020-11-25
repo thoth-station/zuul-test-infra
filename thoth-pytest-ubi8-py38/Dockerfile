@@ -14,7 +14,7 @@ USER 0
 COPY ./ /tmp/src-thoth-pytest
 RUN  \
   pip install --upgrade pip &&\
-  /usr/bin/pip3 install --upgrade pip &&\
-  /usr/bin/pip3 install --requirement /tmp/src-thoth-pytest/requirements.txt
+  /usr/bin/python3 -m pip install --upgrade pip &&\
+  /usr/bin/python3 -m pip install --requirement /tmp/src-thoth-pytest/requirements.txt
 
 USER ${USERID}
