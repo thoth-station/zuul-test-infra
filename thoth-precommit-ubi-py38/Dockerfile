@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.21.1
+FROM quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.20.1
 
 ENV SUMMARY="Thoth's toolchain for running pre-commit hooks." \
     DESCRIPTION="Thoth's toolchain for running pre-commit hooks."
