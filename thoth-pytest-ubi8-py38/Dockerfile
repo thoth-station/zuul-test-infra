@@ -1,4 +1,4 @@
-FROM quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.20.1
+FROM quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.24.2
 
 ENV SUMMARY="Thoth's toolchain for pytest." \
     DESCRIPTION="Thoth's toolchain for pytest."
@@ -12,9 +12,11 @@ LABEL summary="$SUMMARY" \
 
 USER 0
 COPY ./ /tmp/src-thoth-pytest
-RUN  \
-  pip install --upgrade pip &&\
-  /usr/bin/python3 -m pip install --upgrade pip &&\
-  /usr/bin/python3 -m pip install --requirement /tmp/src-thoth-pytest/requirements.txt
+RUN pip install --upgrade pip && \
+    /usr/bin/python3 -m pip install --upgrade pip && \
+    /usr/bin/python3 -m pip install --requirement /tmp/src-thoth-pytest/requirements.txt
+
+COPY root/ /
+RUN chmod 755 /bin/run-pytest
 
 USER ${USERID}
