@@ -18,5 +18,6 @@ RUN pip install --upgrade pip && \
 
 COPY root/ /
 RUN chmod 755 /bin/run-pytest
+RUN chmod 755 /bin/run-mypy
 
 USER ${USERID}
