@@ -16,7 +16,7 @@ RUN pip install --upgrade pip && \
     /usr/bin/python3 -m pip install --upgrade pip && \
     /usr/bin/python3 -m pip install --requirement /tmp/src-thoth-pytest/requirements.txt
 
-COPY root/ /
+COPY root/bin /bin
 RUN chmod 755 /bin/run-pytest
 RUN chmod 755 /bin/run-mypy
 
