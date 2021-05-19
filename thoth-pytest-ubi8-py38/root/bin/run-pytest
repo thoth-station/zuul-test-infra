@@ -6,7 +6,11 @@ set -o errtrace
 set -o pipefail
 
 if [[ -f setup.py ]]; then
-    micropipenv install --dev
+    if [ "$DEBUG" == "1" ]; then
+        micropipenv install --dev
+    else
+        micropipenv install --dev > /dev/null
+    fi
     python3 setup.py test 2>&1
 fi
 
