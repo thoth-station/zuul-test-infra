@@ -11,6 +11,6 @@ LABEL summary="$SUMMARY" \
     io.openshift.tags="srcops,gh,github" \
     name="thoth-station/thoth-srcops"
 
-RUN microdnf install --nodocs git-core && \ 
+RUN microdnf install --nodocs git-core && \
     rpm -i --nodeps --excludedocs https://github.com/cli/cli/releases/download/v1.10.3/gh_1.10.3_linux_amd64.rpm && \
     microdnf clean all
